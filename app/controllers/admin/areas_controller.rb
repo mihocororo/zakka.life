@@ -10,6 +10,7 @@ class Admin::AreasController < ApplicationController
     if @area.save
       redirect_to '/admin/areas'
     else
+      # render :index
 
     end
   end

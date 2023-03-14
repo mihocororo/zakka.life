@@ -1,7 +1,17 @@
+<% if @area.errors.any? %>
+  <%= @area.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @area.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <body>
   <div class = "title">
     <h4 class="mark">エリア追加・一覧</h4>
   </div>
+
+
 
   <div class="container">
     <div class="row">
