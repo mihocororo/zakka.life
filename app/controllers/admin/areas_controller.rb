@@ -11,6 +11,7 @@ class Admin::AreasController < ApplicationController
       redirect_to '/admin/areas'
     else
       # render :index
+      redirect_to '/admin/areas'
 
     end
   end

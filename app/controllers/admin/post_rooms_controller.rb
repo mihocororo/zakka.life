@@ -15,5 +15,6 @@ class Admin::PostRoomsController < ApplicationController
 
   def index
     @post_rooms = PostRoom.all
+
   end
 end
