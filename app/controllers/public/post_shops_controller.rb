@@ -65,4 +65,10 @@ class Public::PostShopsController < ApplicationController
     params.require(:post_shop).permit(:image, :area_id, :name, :introduction, :is_active,:customer_id)
   end
 
+before_action :ensure_current_user, {only: [:edit, :update]}
+  def ensure_current_user
+     redirect_to("/shops")
+  end
+
+
 end
