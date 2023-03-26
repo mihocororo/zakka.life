@@ -45,4 +45,11 @@ class Public::PostRoomsController < ApplicationController
   def post_room_params
     params.require(:post_room).permit(:name, :comment, :image,:customer_id)
   end
+
+before_action :ensure_current_user, {only: [:edit, :update]}
+  def ensure_current_user
+     redirect_to("/rooms")
+  end
+
+
 end
