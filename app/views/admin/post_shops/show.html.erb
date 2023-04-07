@@ -7,6 +7,7 @@
       <th>投稿写真</th>
       <th>投稿者名</th>
       <th>店舗名</th>
+      <th>投稿日時</th>
       <th>エリア</th>
       <th>紹介文</th>
       <th></th>
@@ -21,6 +22,7 @@
       <% end %></td>
       <td><%= @post_shop.customer.nickname %></td>
       <td><%= @post_shop.name %></td>
+      <td><%= @post_shop.created_at.strftime('%Y/%m/%d(%R)') %></td>
       <td><%= @post_shop.area.name %></td>
       <td><%= @post_shop.introduction %></td>
       <td><%= link_to "削除する", admin_destroy_post_shop_path(@post_shop.id), class:"btn btn-outline-dark",method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
