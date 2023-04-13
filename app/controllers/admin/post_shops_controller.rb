@@ -15,7 +15,8 @@ class Admin::PostShopsController < ApplicationController
 
 
   def index
-    @post_shops = PostShop.all
+    # @post_shops = PostShop.all
+    @post_shops = PostShop.page(params[:page])
 
   end
 end

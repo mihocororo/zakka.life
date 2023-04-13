@@ -14,7 +14,8 @@ class Admin::PostRoomsController < ApplicationController
   end
 
   def index
-    @post_rooms = PostRoom.all
+    # @post_rooms = PostRoom.all
+    @post_rooms = PostRoom.page(params[:page])
 
   end
 end
