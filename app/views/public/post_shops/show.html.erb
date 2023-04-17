@@ -8,7 +8,7 @@
       <th>説明</th>
       <th>エリア</th>
       <th>投稿者</th>
-      <th></th>
+      <th>投稿日時</th>
       <th></th>
       </tr>
 </thead>
@@ -24,6 +24,7 @@
       <td><%= @post_shop.introduction %></td>
       <td><%= @post_shop.area.name %></td>
       <td><%= @post_shop.customer.nickname %></td>
+      <td><%= @post_shop.created_at.strftime('%Y/%m/%d(%R)') %></td>
       <% if @post_shop.customer == current_customer %>
       <td><%= link_to '編集する', edit_shop_path, class:"btn btn-outline-success" %></td>
       <% else %>
