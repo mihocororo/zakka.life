@@ -1,6 +1,6 @@
 class Public::PostShopsController < ApplicationController
+before_action :current_customer, {only: [:edit,:update]}
 
-  before_action :ensure_current_user, {only: [:edit,:update]}
 
   def index
     @post_shops = PostShop.page(params[:page])
@@ -20,7 +20,19 @@ class Public::PostShopsController < ApplicationController
 
   def edit
     @post_shop = PostShop.find(params[:id])
+
   end
+
+
+  # def edit
+  #   if @post_shop.customer == current_customer
+  #   @post_shop = PostShop.find(params[:id])
+  #   render action: :edit
+  #   else
+  #   render action: :show
+  #   end
+  # end
+
 
   def create
     @post_shop = PostShop.new(post_shop_params)
@@ -70,22 +82,31 @@ class Public::PostShopsController < ApplicationController
 
 # before_action :ensure_current_customer, {only: [:edit,:update]}
 #   def ensure_current_customer
+#     @post_shop = PostShop.find(params[:id])
 #     redirect_to("/shops")
 #   end
 
-
-  # def ensure_user
-  #   @post_shops = current_user.post_shops
+  # def current_customer
+  #   # @customer = Customer.find(params[:id])
   #   @post_shop = PostShop.find(params[:id])
   #   redirect_to("/shops")
+
   # end
 
 
-  def currect_user
-    @post_shop = PostShop.find(params[:id])
-    @user = @post_shop.user
-    redirect_to(post_shops_path) unless @user == current_user
+  def ensure_current_customer
+    @post_shop.customer = current_customer
+    # @post_shop = PostShop.find(params[:id])
+    redirect_to("/shops/#{post_shop.id}")
   end
+
+
+  #   if @post_shop.customer == current_customer
+  #   @post_shop = PostShop.find(params[:id])
+  #   render action: :edit
+  #   else
+  #   render action: :show
+  #   end
 
 
 end
