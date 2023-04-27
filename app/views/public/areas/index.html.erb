@@ -6,12 +6,10 @@
         見本<%= image_tag "no_image.jpg",size: "200x180", class: 'card-img-top' %>
         店舗名：</br>
         投稿者名：
-        <% if customer_signed_in? %>
-        <button type="button" class="btn btn-outline-success">編集する</button>
-        <% else %>
-        <% end %>
+        <button type="button" class="btn btn-outline-success">店舗詳細</button>
       </div>
 </div>
+
 <% @post_shops.each do |post_shop| %>
 <div class="col-md-4 mb-4">
       <div class="card">
@@ -21,10 +19,7 @@
         <% end %>
       <%= post_shop.name %></br>
       <%= post_shop.customer.nickname %>
-      <% if current_customer %>
-      <%= link_to '編集する', "/shops/#{post_shop.id}/edit", class:"btn btn-outline-dark" %>
-      <% else %>
-      <% end %>
+      <%= link_to '店舗詳細', "/shops/#{post_shop.id}", class:"btn btn-outline-dark" %>
       </div>
 </div>
 <% end %>

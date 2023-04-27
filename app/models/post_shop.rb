@@ -1,5 +1,6 @@
 class PostShop < ApplicationRecord
   has_one_attached :image
+  # has_many_attached :image
   belongs_to :area, optional: true
 
   belongs_to :customer, optional: true
@@ -11,6 +12,7 @@ class PostShop < ApplicationRecord
   has_many :shop_comments
   accepts_nested_attributes_for :shop_comments
   validates :image, presence: true
+  validates :image2, presence: true
   validates :introduction, presence: true
   validates :name, presence: true
   validates :area_id, presence: true
