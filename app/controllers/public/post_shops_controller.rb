@@ -36,6 +36,12 @@ before_action :ensure_current_customer, {only: [:edit,:update]}
 
 
     @shop_comment = ShopComment.new
+      # if shop_comment_count < 1
+      #   @shop_comment.save
+      #   redirect_to shops_path, notice: "レビューを保存しました"
+      # else
+      #   redirect_to shops_path, notice: "レビューの投稿は一度までです"
+      # end
 
 
 

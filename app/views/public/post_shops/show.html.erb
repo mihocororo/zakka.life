@@ -44,6 +44,7 @@
     <% end %></tr>
 </table>
 
+<%= flash[:notice] %>
 
 <%= form_for(@shop_comment, :url=> {controller:'public/shop_comments', action:'create'}) do |f| %>
 <table class="table">
@@ -78,6 +79,7 @@
     <td>
       <%= f.submit "評価する" %></td>
     </tr>
+
 
 <% end %>
 </table>
