@@ -18,22 +18,23 @@ class Public::ShopCommentsController < ApplicationController
     # redirect_to '/shops'
   end
 
-
+# where(post_shop_id: params[:post_shop_id]).
   def create
-    @ShopComment_count = ShopComment.where(post_shop_id: params[:post_shop_id]).where(customer_id: current_customer.id).count
+    @ShopComment_count = ShopComment.where(customer_id: current_customer.id).count
 
     @shop_comment = ShopComment.new(shop_comment_params)
 
     @shop_comment.customer_id = current_customer.id
 
-
+    # if @ShopComment.valid?
     if @ShopComment_count < 1
       @shop_comment.save
       redirect_to shop_comments_path
     else
       redirect_to shops_path
-      flash[:notice]= "レビューの投稿は一度までです"
+      flash[:notice2]= "レビューの投稿は一度までです"
     end
+    # end
   end
 
   def destroy
