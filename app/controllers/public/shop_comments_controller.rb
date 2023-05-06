@@ -18,9 +18,9 @@ class Public::ShopCommentsController < ApplicationController
     # redirect_to '/shops'
   end
 
-# where(post_shop_id: params[:post_shop_id]).
+
   def create
-    @ShopComment_count = ShopComment.where(customer_id: current_customer.id).count
+    @ShopComment_count = ShopComment.where(customer_id: current_customer.id).where(post_shop_id: params[:post_shop_id]).count
 
     @shop_comment = ShopComment.new(shop_comment_params)
 

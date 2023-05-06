@@ -1,12 +1,15 @@
 <h4><%= image_tag "cat.jpg", size: '80x80' %>マイページ</h4>
-<div class="sidebar">
-<h4>星評価一覧</h4>
-<table>
+<div class="mysidebar">
+<h4>☆星評価一覧</h4>
+<table class="mytable">
 <% @shop_comments.each do |t| %>
   <tbody>
     <tr>
       <td>店舗名</td>
-      <td><%= t.post_shop.name %></td>
+      <td>
+      <%= link_to post_shop_path(t.post_shop) do %>
+      <%= t.post_shop.name %>
+      <% end %></td>
     </tr>
     <tr>
     <td>星評価</td>
@@ -24,11 +27,12 @@
     <td><%= link_to "削除", destroy_shop_comment_path(t.id), method: :delete %></td>
     <td></td>
     </tr>
+  </tbody>
 <% end %></table>
 </div>
 
-<div class="sidebar">
-  <h4>お気に入り一覧</h4>
+<div class="mysidebar">
+  <h4>☆お気に入り一覧</h4>
   <table>
   <% @likes.each do |like| %>
   <tbody>
@@ -54,7 +58,7 @@
 </table>
 </div>
 
-<div class = "topmenu">
+<div class = "mypage">
 
 
 <a>登録情報</a> <a class="btn btn-outline-success m-5" href="/customers/information/edit" role="button">編集する</a>
@@ -66,7 +70,7 @@
       <td><%= @customer.name %></td>
     </tr>
     <tr>
-      <td>投稿名</td>
+      <td>投稿</td>
       <td><%= @customer.nickname %></td>
     </tr>
     <tr>
